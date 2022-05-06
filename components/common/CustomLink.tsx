@@ -8,9 +8,9 @@ interface CustomLinkProps {
   children: React.ReactNode;
 }
 
-const CustomLink = ({ className, href, as, children }: CustomLinkProps) => (
+const CustomLink = ({ className, href, as, children, ...restProps }: CustomLinkProps) => (
   <Link href={href} as={as} passHref>
-    <a className={className || ""}>{children}</a>
+    <a className={className || ""} {...restProps}>{children}</a>
   </Link>
 );
 
