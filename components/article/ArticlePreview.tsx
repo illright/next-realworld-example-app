@@ -3,6 +3,7 @@ import Link from "next/link";
 import Router from "next/router";
 import React from "react";
 import useSWR from "swr";
+import { useId } from "@react-aria/utils";
 
 import CustomLink from "../common/CustomLink";
 import CustomImage from "../common/CustomImage";
@@ -16,6 +17,8 @@ const NOT_FAVORITED_CLASS = "btn btn-sm btn-outline-primary";
 
 const ArticlePreview = ({ article }) => {
   const setPage = usePageDispatch();
+  const headingId = useId();
+  const readMoreId = useId();
 
   const [preview, setPreview] = React.useState(article);
   const [hover, setHover] = React.useState(false);
@@ -70,7 +73,7 @@ const ArticlePreview = ({ article }) => {
   if (!article) return;
 
   return (
-    <div className="article-preview" style={{ padding: "1.5rem 0.5rem" }}>
+    <article className="article-preview" style={{ padding: "1.5rem 0.5rem" }} aria-labelledby={headingId}>
       <div className="article-meta">
         <CustomLink
           href="/profile/[pid]"
@@ -101,6 +104,7 @@ const ArticlePreview = ({ article }) => {
               preview.favorited ? FAVORITED_CLASS : NOT_FAVORITED_CLASS
             }
             onClick={() => handleClickFavorite(preview.slug)}
+            aria-label={`Like, ${preview.favoritesCount} likes`}
           >
             <i className="ion-heart" /> {preview.favoritesCount}
           </button>
@@ -111,10 +115,11 @@ const ArticlePreview = ({ article }) => {
         href="/article/[pid]"
         as={`/article/${preview.slug}`}
         className="preview-link"
+        aria-labelledby={readMoreId}
       >
-        <h1>{preview.title}</h1>
+        <h1 id={headingId}>{preview.title}</h1>
         <p>{preview.description}</p>
-        <span>Read more...</span>
+        <span id={readMoreId}>Read more...</span>
         <ul className="tag-list" style={{ maxWidth: "100%" }}>
           {preview.tagList.map((tag, index) => {
             return (
@@ -150,7 +155,7 @@ const ArticlePreview = ({ article }) => {
           })}
         </ul>
       </CustomLink>
-    </div>
+    </article>
   );
 };
 
