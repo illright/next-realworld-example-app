@@ -20,10 +20,10 @@ const Home = () => (
         <div className="row">
           <MainView />
           <div className="col-md-3">
-            <div className="sidebar">
-              <p>Popular Tags</p>
+            <aside className="sidebar" aria-labelledby="popular-tags-heading">
+              <p id="popular-tags-heading">Popular Tags</p>
               <Tags />
-            </div>
+            </aside>
           </div>
         </div>
       </div>
