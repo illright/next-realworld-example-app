@@ -18,19 +18,20 @@ const TabList = () => {
 
   if (!isLoggedIn) {
     return (
-      <ul className="nav nav-pills outline-active">
-        <li className="nav-item">
-          <NavLink href="/" as="/">
+      <ul className="nav nav-pills outline-active" role="tablist">
+        <li className="nav-item" role="presentation">
+          <NavLink href="/" as="/" role="tab">
             Global Feed
           </NavLink>
         </li>
 
         <Maybe test={!!tag}>
-          <li className="nav-item">
+          <li className="nav-item" role="presentation">
             <CustomLink
               href={`/?tag=${tag}`}
               as={`/?tag=${tag}`}
               className="nav-link active"
+              role="tab"
             >
               <i className="ion-pound" /> {tag}
             </CustomLink>
@@ -42,27 +43,29 @@ const TabList = () => {
 
   return (
     <ul className="nav nav-pills outline-active">
-      <li className="nav-item">
+      <li className="nav-item" role="presentation">
         <NavLink
           href={`/?follow=${currentUser?.username}`}
           as={`/?follow=${currentUser?.username}`}
+          role="tab"
         >
           Your Feed
         </NavLink>
       </li>
 
-      <li className="nav-item">
-        <NavLink href="/" as="/">
+      <li className="nav-item" role="presentation">
+        <NavLink href="/" as="/" role="tab">
           Global Feed
         </NavLink>
       </li>
 
       <Maybe test={!!tag}>
-        <li className="nav-item">
+        <li className="nav-item" role="presentation">
           <CustomLink
             href={`/?tag=${tag}`}
             as={`/?tag=${tag}`}
             className="nav-link active"
+            role="tab"
           >
             <i className="ion-pound" /> {tag}
           </CustomLink>

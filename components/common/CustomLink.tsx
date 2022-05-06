@@ -1,7 +1,8 @@
 import Link from "next/link";
 import React from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
-interface CustomLinkProps {
+interface CustomLinkProps extends ComponentPropsWithoutRef<'a'> {
   href: string;
   as: string;
   className?: string;
