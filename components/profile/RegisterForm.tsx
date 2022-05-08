@@ -57,30 +57,41 @@ const RegisterForm = () => {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <fieldset className="form-group">
+            <label htmlFor="register-form-username" className="form-control-label">
+              Username
+            </label>
             <input
               className="form-control form-control-lg"
               type="text"
-              placeholder="Username"
+              id="register-form-username"
+              placeholder="person"
               value={username}
               onChange={handleUsernameChange}
             />
           </fieldset>
 
           <fieldset className="form-group">
+            <label htmlFor="register-form-email" className="form-control-label">
+              Email
+            </label>
             <input
               className="form-control form-control-lg"
               type="email"
-              placeholder="Email"
+              id="register-form-email"
+              placeholder="sample@email.com"
               value={email}
               onChange={handleEmailChange}
             />
           </fieldset>
 
           <fieldset className="form-group">
+            <label htmlFor="register-form-password" className="form-control-label">
+              Password
+            </label>
             <input
               className="form-control form-control-lg"
               type="password"
-              placeholder="Password"
+              id="register-form-password"
               value={password}
               onChange={handlePasswordChange}
             />
